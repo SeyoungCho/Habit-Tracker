@@ -1,12 +1,18 @@
 import './app.css';
 import Habits from './Components/habits';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <>
-      <Habits />
-    </>
-  );
+class App extends Component {
+  state = {
+    count: 0,
+  };
+  render() {
+    return (
+      <div>
+        <Habits />
+      </div>
+    );
+  }
 }
 
 export default App;
