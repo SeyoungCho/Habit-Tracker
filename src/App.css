@@ -52,3 +52,15 @@ button{
   left:150px;
 }
 
+.navbar{
+  background-color: darkseagreen;
+  display: inline;
+  width : 50%;
+  height: 70px;
+  
+
+}
+.navbar h1{
+  color:deeppink;
+  
+}
