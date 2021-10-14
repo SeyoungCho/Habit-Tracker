@@ -3,7 +3,9 @@ button{
   border : 0;
   cursor: pointer;
 }
-
+*{
+  box-sizing: border-box;
+}
 .habit{
   font-size: 2.5rem;
   padding:0.5em;
@@ -53,14 +55,64 @@ button{
 }
 
 .navbar{
-  background-color: darkseagreen;
-  display: inline;
-  width : 50%;
-  height: 70px;
-  
-
+  background-color: blanchedalmond;
+  font-size: 2rem;
+  padding: 1em;
 }
-.navbar h1{
-  color:deeppink;
+.navbar-logo{
+  color: green;
+  margin-right: 0.5em;
+}
+
+.navbar-count{
+  display: inline-block;
+  text-align:center;
+  font-size: 2rem;
+  width:2.5rem;
+  height: 2.5rem;
+  line-height:2.5rem;
+  margin-left:0.2em;
+  background-color: green;
+  color:white;
+  border-radius:50%;
+}
+
+#textarea {
+  width: 30%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  margin: 12px 20px;
+}
+
+#textarea:focus{
+  border: 5px solid violet;
+}
+
+.submit-btn{
+  background-color: darkcyan;
+  color: white;
+  text-decoration: none;
+  margin:4px 2px;
+  width:100px;
+  height:30px;
+  border-radius: 0.3rem;
+  position:relative;
   
+}
+
+.submit-btn:hover{
+  border-color: black;
+  background-color: aquamarine;
+  color: black;
+}
+.input-form{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -10,7 +10,7 @@ class App extends Component {
             {id : 2, name: 'Running', count:0},
             {id : 3, name: 'Coding', count:0},
             ],
-    total_count: 0,
+    
   };
   handleIncrement = (habit)=>{
     const target = this.state.habits.find(a => a.id === habit.id);
@@ -18,7 +18,7 @@ class App extends Component {
     var arr = [...this.state.habits];
     arr[index].count += 1;
     this.setState({habits: arr});
-    this.manageTotal();   
+     
   };
 
   handleDecrement = (habit)=>{
@@ -27,7 +27,7 @@ class App extends Component {
     var arr = [...this.state.habits];
     arr[index].count === 0 ? arr[index].count = 0 : arr[index].count -= 1;
     this.setState({habits: arr});
-    this.manageTotal();  
+     
   };
 
   handleDelete = (habit)=>{
@@ -36,19 +36,12 @@ class App extends Component {
     var arr = [...this.state.habits];
     arr.splice(index, 1);
     this.setState({habits: arr});
-    this.manageTotal();
+    
   };
   
   handleClear = ()=>{
     this.setState({habits: [], total_count:0});
     
-  };
-  manageTotal = ()=>{
-    var cnt = 0;
-    this.state.habits.map(habit=>{
-      cnt += habit.count;
-    }, []);
-    this.setState({total_count:cnt});
   };
   handleAdd = (input) =>{
     const newItem = {
@@ -63,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar count={this.state.total_count}/>
+        <Navbar count={this.state.habits.filter(item=>item.count>0).length}/>
         <InputForm habit={this.state.habits} onAdd={this.handleAdd}/>
         <Habits key={this.state.habits.id} habit={this.state.habits} onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement} onDelete={this.handleDelete}
