@@ -8,7 +8,7 @@ class Habit extends Component {
   handleIncrement = ()=>{
     this.props.onIncrement(this.props.habit);
   };
-
+ 
   handleDecrement = ()=>{
     this.props.onDecrement(this.props.habit);
   };
@@ -16,21 +16,32 @@ class Habit extends Component {
   handleDelete = ()=>{
     this.props.onDelete(this.props.habit);
   };
+  handleOrder = (direction)=>{
+    this.props.onOrder(this.props.habit, direction);
+  }
   render() {
     const {name, count} = this.props.habit;
     return (
       <li className="habit">
         <span className="habit-name">{name}</span>
         <span className="habit-count">{count}</span>
-        <button className="habit-button habit-increase" onClick={this.handleIncrement}>
-          <i className="fas fa-plus-square"></i>
-        </button>
-        <button className="habit-button habit-decrease" onClick={this.handleDecrement}>
-          <i className="fas fa-minus-square"></i>
-        </button>
-        <button className="habit-button habit-delete" onClick={this.handleDelete}>
-          <i className="fas fa-trash"></i>
-        </button>
+        <div className="habit-buttons">
+          <button className="habit-button habit-increase" onClick={this.handleIncrement}>
+            <i class="fas fa-plus"></i>
+          </button>
+          <button className="habit-button habit-decrease" onClick={this.handleDecrement}>
+            <i className="fas fa-minus"></i>
+          </button>
+          <button className="habit-button habit-delete" onClick={this.handleDelete}>
+            <i className="far fa-trash-alt"></i>
+          </button>
+          <button className="habit-button habit-up" onClick={this.handleOrder('up')}>
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <button className="habit-button habit-down" onClick={this.handleOrder('down')}>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
       </li> 
     );
   }

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Navbar from './Components/navbar';
 import InputForm from './Components/form';
 
+
 class App extends Component {
   state = {    
     habits: [{id : 1, name: 'Reading', count:0},
@@ -36,12 +37,10 @@ class App extends Component {
     var arr = [...this.state.habits];
     arr.splice(index, 1);
     this.setState({habits: arr});
-    
   };
   
   handleClear = ()=>{
-    this.setState({habits: [], total_count:0});
-    
+    this.setState({habits: []});
   };
   handleAdd = (input) =>{
     const newItem = {
@@ -52,7 +51,34 @@ class App extends Component {
     var arr = [...this.state.habits];
     arr.push(newItem);
     this.setState({habits:arr});
-  }
+  };
+  handleOrder = (item, btn)=>{
+    if(btn==='up'){
+      if(item.id!==1){
+        const above = this.state.habits.find(a=>a.id === item.id-1);
+        this.swapOrder(item, above);
+      }
+    }else if(btn==='down'){
+      if(item.id!==this.state.habits.length){
+        const below = this.state.habits.find(a=>a.id === item.id + 1);
+        this.swapOrder(item, below);
+      }
+    }
+  };
+  swapOrder = (a, b)=>{
+    let temp_a = {...a};
+    let temp_b = {...b};
+    const temp = temp_a.id;
+    temp_a.id = temp_b.id;
+    temp_b.id = temp;
+    
+    let arr = [...this.state.habits];
+    if(b===undefined) return;
+    arr.filter((item)=> (item.id!==a.id && item.id!==b.id));
+    arr.push(temp_a,temp_b);
+    arr.sort((x,y)=>x.id-y.id);
+    this.setState({habits:arr});
+  };
   render() {
     return (
       <div>
@@ -60,7 +86,9 @@ class App extends Component {
         <InputForm habit={this.state.habits} onAdd={this.handleAdd}/>
         <Habits key={this.state.habits.id} habit={this.state.habits} onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement} onDelete={this.handleDelete}
-            onClear={this.handleClear}/>
+            onClear={this.handleClear} count={this.state.habits.length}
+            onOrder={this.handleOrder}/>
+        
       </div>
     );
   }

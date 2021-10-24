@@ -17,25 +17,30 @@ class Habits extends Component {
 
   handleClear = ()=>{
     this.props.onClear();
+  };
+  handleOrder = (habit, direction)=>{
+    this.props.onOrder(habit, direction);
   }
+
   render() {
     return (
-    <>
+    <section className="habit-list">
       <ul>
         {
           this.props.habit.map(habit =>
             <Habit key={habit.id} habit={habit} onIncrement={this.handleIncrement}
-            onDecrement={this.handleDecrement} onDelete={this.handleDelete}/>
+            onDecrement={this.handleDecrement} onDelete={this.handleDelete}
+            onOrder={this.handleOrder}/>
           )
         }
       </ul>
-      <button className="clear-button" onClick={()=>{
+      {this.props.count > 0 ? <button className="clear-button" onClick={()=>{
         this.handleClear();
-       
       }}>Clear&nbsp;
         <i class="fas fa-pump-soap"></i>
-      </button>
-    </>);
+      </button> : null}
+      
+    </section>);
   }
 }
 

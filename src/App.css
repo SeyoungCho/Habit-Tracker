@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+KR&family=Rampart+One&display=swap');
+:root{
+  --main-color:rgb(0, 0, 73);
+  --sub-color:rgb(67, 255, 177);
+  --font-family:'Zen Kurenaido','Gowun Dodum', sans-serif;
+  --font-color:#edecff;
+  --habit-button-color:#b5bac0;
+}
+body{
+  margin:0;
+  background-color: rgb(0, 0, 73);
+}
+a{
+  text-decoration: none;
+  color:var(--font-color);;
+}
 button{
   outline: none;
   border : 0;
@@ -6,13 +22,37 @@ button{
 *{
   box-sizing: border-box;
 }
+textarea  
+{  
+  font-family: var(--font-family);
+  font-size: 12px;   
+}
+
+#filled-basic{
+  color:black;
+  background-color: white;
+  
+  font-size:20px;
+}
+
 .habit{
-  font-size: 2.5rem;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
   padding:0.5em;
-  list-style: none;
+  width:100%;
+  
+}
+.habit-buttons{
+  display:flex;
+  align-items: center;  
+}
+.habit-name{
+  width:400px;
 }
 .habit-count{
-  display: inline-block;
+  width:100px;
   text-align: center;
   font-size: 2rem;
   width: 2.5rem;
@@ -20,52 +60,61 @@ button{
   line-height: 2.5rem;
   margin-left: 0.2em;
   margin-right: 0.2em;
-  background-color: darkseagreen;
-  color: white;
+  background-color: var(--main-color);
+  color: var(--font-color);
   border-radius: 50%;
 }
 .habit-button{
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin: 0 0.1em;
   background-color: transparent;
+  color: var(--habit-button-color);
 }
 
 .habit-button:hover{
   opacity: 0.8;
 }
 
-
-.habit-increase,
-.habit-decrease{
-  color: goldenrod;
-}
-
 .habit-delete{
-  color:darkred;
+  color:var(--habit-button-color);
   vertical-align: baseline;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .clear-button{
   font-size: 2.5rem;
   margin: 0 0.1em;
   background-color: transparent;
-  position:absolute;
+  color:var(--sub-color);
   left:150px;
+  font-family: var(--font-family);
 }
 
 .navbar{
-  background-color: blanchedalmond;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(67, 255, 177);
   font-size: 2rem;
-  padding: 1em;
+  padding: 8px 12px;
+  font-family: var(--font-family);
 }
 .navbar-logo{
   color: green;
-  margin-right: 0.5em;
+}
+.navbar-logo span{
+  padding-left: 0.5em;
+  color: black;
+}
+.navbar-logo span:hover{
+  color:palevioletred;
+}
+.navbar-logo:hover{
+  color:palevioletred;
 }
 
 .navbar-count{
-  display: inline-block;
+  display:inline-block;
   text-align:center;
   font-size: 2rem;
   width:2.5rem;
@@ -73,46 +122,66 @@ button{
   line-height:2.5rem;
   margin-left:0.2em;
   background-color: green;
-  color:white;
+  color:var(--font-color);
   border-radius:50%;
+  padding-left: 0;
+  margin-right:110px;
+}
+.navbar-count span{
+  margin-left: 0;
+}
+.navbar-links{
+  display:flex;
+  list-style:none;
+  color: black;
+  padding:0;
+}
+.navbar-links li{
+  padding-left:0.5em;
+  
+}
+.navbar-links li:nth-child(2){
+  
+  padding-right:1em;
+}
+.navbar-links li:hover{
+  color:palevioletred;
 }
 
-#textarea {
-  width: 30%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  resize: none;
-  margin: 12px 20px;
-}
-
-#textarea:focus{
-  border: 5px solid violet;
-}
 
 .submit-btn{
-  background-color: darkcyan;
-  color: white;
-  text-decoration: none;
-  margin:4px 2px;
-  width:100px;
-  height:30px;
-  border-radius: 0.3rem;
-  position:relative;
+  margin-left:50px;
   
 }
 
-.submit-btn:hover{
-  border-color: black;
-  background-color: aquamarine;
-  color: black;
-}
 .input-form{
   display:flex;
-  flex-direction: column;
   justify-content: center;
+  margin-top:20px;
   align-items: center;
+  
+}
+.input-form input{
+  font-family: var(--font-family);
+}
+.habit-list{
+  display:flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  color:var(--font-color);
+}
+
+@media screen and (max-width:768px){
+  .navbar{
+    flex-direction: column;
+  }
+  .navbar-count{
+    margin-top:10px;
+    
+    margin-right:0;
+  }
+  .navbar-links{
+    margin-top:2px;
+    margin-bottom:1px;
+  }
 }
