@@ -14,29 +14,37 @@ class App extends Component {
     
   };
   handleIncrement = (habit)=>{
-    const target = this.state.habits.find(a => a.id === habit.id);
-    const index = this.state.habits.indexOf(target);
-    var arr = [...this.state.habits];
-    arr[index].count += 1;
-    this.setState({habits: arr});
+    const habits = this.state.habits.map((item)=>{
+      if(item.id===habit.id){
+        return {...habit, count:habit.count+1};
+      }
+      else{
+        return item;
+      }
+    });
+    this.setState({habits});
      
   };
 
   handleDecrement = (habit)=>{
-    const target = this.state.habits.find(a => a.id === habit.id);
-    const index = this.state.habits.indexOf(target);
-    var arr = [...this.state.habits];
-    arr[index].count === 0 ? arr[index].count = 0 : arr[index].count -= 1;
-    this.setState({habits: arr});
+    const habits = this.state.habits.map((item)=>{
+      if(item.id===habit.id){
+        const count = habit.count - 1;
+        return {...habit, count: count < 0 ? 0 : count};
+      }
+      else{
+        return item;
+      }
+    });
+    this.setState({habits});
      
   };
 
   handleDelete = (habit)=>{
-    const target = this.state.habits.find(a => a.id === habit.id);
-    const index = this.state.habits.indexOf(target);
-    var arr = [...this.state.habits];
-    arr.splice(index, 1);
-    this.setState({habits: arr});
+    const habits = this.state.habits.filter(item=>
+      item.id !== habit.id
+    );
+    this.setState({habits});
   };
   
   handleClear = ()=>{
@@ -48,9 +56,8 @@ class App extends Component {
       name: String(input),
       count: 0,
     }
-    var arr = [...this.state.habits];
-    arr.push(newItem);
-    this.setState({habits:arr});
+    const habits = [...this.state.habits, newItem];
+    this.setState({habits});
   };
   handleOrder = (item, btn)=>{
     if(btn==='up'){
@@ -81,12 +88,13 @@ class App extends Component {
     this.setState({habits:arr});
   };
   handleReset = ()=>{
-    
-    const arr = this.state.habits.map((habit)=>{
-      habit.count = 0;
-      return habit;
+    const habits = this.state.habits.map(item=>{
+      if(item.count!==0) {
+        return {...item, count:0};
+      }
+      return item;
     });
-    this.setState({habits:arr});
+    this.setState({habits});
   };
   render() {
     return (
