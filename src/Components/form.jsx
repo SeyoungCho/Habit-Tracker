@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 
 
-class InputForm extends Component {
+class InputForm extends PureComponent {
   state = {
     input:"",
   };

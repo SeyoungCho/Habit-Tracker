@@ -79,7 +79,14 @@ class App extends Component {
     
     arr.sort((x,y)=>x.id-y.id);
     this.setState({habits:arr});
-    console.log(this.state.habits);
+  };
+  handleReset = ()=>{
+    
+    const arr = this.state.habits.map((habit)=>{
+      habit.count = 0;
+      return habit;
+    });
+    this.setState({habits:arr});
   };
   render() {
     return (
@@ -89,7 +96,8 @@ class App extends Component {
         <Habits key={this.state.habits.id} habit={this.state.habits} onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement} onDelete={this.handleDelete}
             onClear={this.handleClear} count={this.state.habits.length}
-            onOrder={this.handleOrder}/>
+            onOrder={this.handleOrder}
+            onReset={this.handleReset}/>     
       </div>
     );
   }
