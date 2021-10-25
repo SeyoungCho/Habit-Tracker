@@ -15,10 +15,10 @@ class Navbar extends Component {
 
         <ul className="navbar-links">
           <li>
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </li>
           <li>
-            <i class="fab fa-instagram"></i>
+            <i className="fab fa-instagram"></i>
           </li>
         </ul>
         

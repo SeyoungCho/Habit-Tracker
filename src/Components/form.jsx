@@ -12,11 +12,12 @@ class InputForm extends Component {
     if(input!==""){
       this.props.onAdd(input);
       document.getElementById('filled-basic').value="";
+      this.setState({input:""});
     }
   };
   handleChange = (e)=>{ //input state 변경
-    if(e.target.value !== ""){
-      this.setState({input:e.target.value});
+    if(e.target.value.trim() !== ""){
+      this.setState({input:e.target.value.trim()});
     }
   }
   

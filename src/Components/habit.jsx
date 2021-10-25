@@ -35,10 +35,10 @@ class Habit extends Component {
           <button className="habit-button habit-delete" onClick={this.handleDelete}>
             <i className="far fa-trash-alt"></i>
           </button>
-          <button className="habit-button habit-up" onClick={this.handleOrder('up')}>
+          <button className="habit-button habit-up" onClick={()=>{const dir = 'up'; this.handleOrder(dir);}}>
             <i class="fas fa-chevron-up"></i>
           </button>
-          <button className="habit-button habit-down" onClick={this.handleOrder('down')}>
+          <button className="habit-button habit-down" onClick={()=>{const dir = 'down'; this.handleOrder(dir)}}>
             <i class="fas fa-chevron-down"></i>
           </button>
         </div>

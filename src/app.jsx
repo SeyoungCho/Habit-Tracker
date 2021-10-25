@@ -74,10 +74,12 @@ class App extends Component {
     
     let arr = [...this.state.habits];
     if(b===undefined) return;
-    arr.filter((item)=> (item.id!==a.id && item.id!==b.id));
+    arr = arr.filter((item)=> (item.id!==a.id && item.id!==b.id));
     arr.push(temp_a,temp_b);
+    
     arr.sort((x,y)=>x.id-y.id);
     this.setState({habits:arr});
+    console.log(this.state.habits);
   };
   render() {
     return (
@@ -88,7 +90,6 @@ class App extends Component {
             onDecrement={this.handleDecrement} onDelete={this.handleDelete}
             onClear={this.handleClear} count={this.state.habits.length}
             onOrder={this.handleOrder}/>
-        
       </div>
     );
   }
